@@ -1,8 +1,8 @@
 from django.shortcuts import render
-import six, os
-from google.cloud import language
-from google.cloud.language import enums, types
-from google_images_download import google_images_download
+import os
+# from google.cloud import language
+# from google.cloud.language import enums, types
+# from google_images_download import google_images_download
 
 def home(request):
     return render(request, 'min1/home.html')

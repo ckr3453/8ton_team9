@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+<style>
+#info{
+    margin:20px;
+}
+</style>
    <!-- banner part start-->
    <section class="banner_part">
     <div class="container">
@@ -37,7 +42,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-3">
-                                <a href="#" class="search_btn">작성하기!</a>
+                                <a href="{% url 'write'%}" class="search_btn">작성하기!</a>
                             </div>
                         </div>
                     </form>
@@ -45,30 +50,25 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-4 col-sm-6">
-                <div class="single_donation_item">   
-                    <h4>컨텐츠</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur adipiscing 
-                    lit sed do eiusmod tempor incididunt ut labore et 
-                    dolore magna </p>        
-                </div>
+            <div class="banner_text_iner">
+            <div id="info">
+                <h3>민 Number 1</h3>
+                <p>편리한 온라인 행정 서비스를 제공하는 민 Number 1을 통하여 각 지역에서 일어나는 여러가지 문제점을 공론화하세요!<br>
+                다른 사용자들의 공감과 동의를 얻으면 민원을 의회로 전송하여 특정한 행정 조치를 요구할 수 있습니다.<br>
+                </p>
             </div>
-            <div class="col-lg-4 col-sm-6">
-                <div class="single_donation_item">
-                    <h4>컨텐츠</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur adipiscing 
-                    elit sed do eiusmod tempor incididunt ut labore et 
-                    dolore magna </p>
-                </div>
+            <div id="info">
+                <h4>심사 절차</h4>
+                <p>게시글 작성 -> 1달 간 의견 수렴 -> 의회 제출 결정<br></p>
             </div>
-            <div class="col-lg-4 col-sm-6">
-                <div class="single_donation_item">
-                    <h4>컨텐츠</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur adipiscing 
-                    elit sed do eiusmod tempor incididunt ut labore et 
-                    dolore magna </p>
-                </div>
+            <div id="info">
+                <h4>의회 제출 요건</h4>
+                <p>
+                1. 해당 지역 거주자의 30% 이상이 투표에 참여<br>
+                2. 투표 참여자의 70% 이상이 4(심각함) 혹은 5(매우 심각함) 선택<br>
+                </p>
             </div>
+            </div> 
         </div>
     </div>
     <img src="img/animate_icon/Shape-1.png" alt="" class="feature_icon_1">

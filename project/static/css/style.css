@@ -3802,12 +3802,15 @@ ul {
 .footer_part {
   padding: 180px 0px 25px;
   position: relative;
+  background-color: #FBF8EF;
 }
 
 @media (max-width: 991px) {
   /* line 2, /Applications/MAMP/htdocs/palash/cl/july 2019/189 travel/189 travel html/sass/_footer.scss */
   .footer_part {
     padding: 70px 0px 25px;
+    position: relative;
+    background-color: #FBF8EF;
   }
 }
 
@@ -3815,6 +3818,8 @@ ul {
   /* line 2, /Applications/MAMP/htdocs/palash/cl/july 2019/189 travel/189 travel html/sass/_footer.scss */
   .footer_part {
     padding: 80px 0px 25px;
+    position: relative;
+    background-color: #FBF8EF;
   }
 }
 

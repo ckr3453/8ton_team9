@@ -13,7 +13,6 @@
             <div class="card-body">
                 <form method="POST" action="{% url 'login' %}">
                     {% csrf_token %}
-
                     <div class="form-group">
                         <div class="form-label-group">
                             <input name="email" type="email" id="inputEmail" class="form-control"

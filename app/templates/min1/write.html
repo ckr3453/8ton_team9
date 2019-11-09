@@ -16,30 +16,34 @@ button{
 </style>
 
 <body>
-<div class="section-top-border">
-	<div class="row">
-		<div class="col-lg-8 col-md-8">
-			<h3 class="mb-30">민원 작성</h3>
-			<form action="#">
-				<div class="mt-10">
-					<input type="text" name="title" placeholder="민원 제목"
-						onfocus="this.placeholder = '제목'" onblur="this.placeholder = '제목'" required
-						class="single-input">
-				</div>
-                <div class="mt-10">
-					<textarea class="single-textarea" name="content" placeholder="민원 내용" onfocus="this.placeholder = ''"
-						onblur="this.placeholder = '민원 내용'"></textarea>
-				</div>
-				<div class="mt-10">
-					<input type="file" name="files" placeholder="파일 첨부" onfocus="this.placeholder = ''"
-						onblur="this.placeholder = 'Files'" required class="single-input">
-				</div>
-                <br>
-                <input type="submit" value='민원 제출'>
-			</form>
-		</div>
+<div class="container">
+    <div class="card card-login mx-auto mt-5">
+        <div class="section-top-border">
+	    <div class="row">
+		    <div class="card-header">민원 작성</div>
+            <div class="card-body">
+			    <form action="#">
+				    <div class="mt-10">
+					    <input type="text" name="title" placeholder="민원 제목"
+						    onfocus="this.placeholder = '제목'" onblur="this.placeholder = '제목'" required
+						    class="single-input">
+			    	</div>
+                    <div class="mt-10">
+					    <textarea class="single-textarea" name="content" placeholder="민원 내용" onfocus="this.placeholder = ''"
+						    onblur="this.placeholder = '민원 내용'"></textarea>
+			    	</div>
+				    <div class="mt-10">
+					    <input type="file" name="files" placeholder="파일 첨부" onfocus="this.placeholder = ''"
+						    onblur="this.placeholder = 'Files'" required class="single-input">
+			    	</div>
+                    <br>
+                    <input type="submit" value='민원 제출'>
+			    </form>
+	    	</div>
+            </div>
+        </div>
+        </div>
     </div>
-</div>
-
+</div
 </body>
 {% endblock%}

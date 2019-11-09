@@ -5,39 +5,7 @@
 #info{
     margin:20px;
 }
-#pointer {
-    display:inline-block;
-    width: 200px;
-    height: 40px;
-    position: relative;
-    background: #00c0ff;
-    text-align: center;
-    font-size: 23px;
-}
-#pointer:after {
-    display:inline-block;
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 0;
-    height: 0;
-    border-left: 20px solid white;
-    border-top: 20px solid transparent;
-    border-bottom: 20px solid transparent;
-}
-#pointer:before {
-    display:inline-block;
-    content: "";
-    position: absolute;
-    right: -20px;
-    bottom: 0;
-    width: 0;
-    height: 0;
-    border-left: 20px solid #00c0ff;;
-    border-top: 20px solid transparent;
-    border-bottom: 20px solid transparent;
-}
+
 </style>
    <!-- banner part start-->
    <section class="banner_part">
@@ -88,13 +56,15 @@
             <div id="info">
                 <h2 style="color:#00c0ff">MIN Number 1</h2>
                 <p>편리한 온라인 행정 서비스를 제공하는 
-                <span style="color:#00c0ff">민 넘버 원</span>을 통하여 각 지역에서 일어나는 여러가지 문제점을 공론화하세요!<br>
+                <span style="color:#00c0ff">민 넘버 원</span>을 통하여 각 지역에서 발생하는 여러가지 문제점을 공론화하세요!<br>
                 다른 사용자들의 공감과 동의를 얻으면 민원을 의회로 전송하여 특정한 행정 조치를 요구할 수 있습니다.<br>
+                관심사를 정하여 다른 지역에서 발생하는 문제점을 알아보고, 투표에 참여하세요!<br>
+                자율적인 민주시민으로 가는 지름길, 민 넘버 원입니다.<br>
                 </p>
             </div>
             <div id="info">
                 <h3 style="color:#00c0ff">심사 절차</h3>
-                <img src="{% static 'image/process.png'%}">
+                <img src="{% static 'img/process.png' %}" size="80%">
             </div>
             <div id="info">
                 <h3 style="color:#00c0ff">의회 제출 요건</h3>
@@ -107,5 +77,4 @@
         </div>
     </div>
 </section>
-<!— banner part start—>
 {% endblock %}

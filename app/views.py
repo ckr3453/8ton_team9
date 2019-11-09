@@ -5,3 +5,6 @@ def home(request):
 
 def index(request):
     return render(request, 'app/index.html')    
+
+def write(request):
+    return render(request, 'app/write.html')    

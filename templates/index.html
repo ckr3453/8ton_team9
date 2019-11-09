@@ -65,10 +65,15 @@
                                     role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     지역별 민원보기
                                 </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                                    <a class="dropdown-item" href="elements.html">지역1</a>
-                                    <a class="dropdown-item" href="elements.html">지역2</a>
-                                </div>
+                                <form action = "{% url 'app:area_posts' %}" method = "POST">
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown1" name = "area">
+                                        <a class="dropdown-item" href="#">종로구</a>
+                                        <a class="dropdown-item" href="#">강남구</a>
+                                        <a class="dropdown-item" href="#">강동구</a>
+                                        <a class="dropdown-item" href="#">노원구</a>
+                                        <a class="dropdown-item" href="#">은평구</a>
+                                    </div>
+                                </form>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="contact.html">문의</a>

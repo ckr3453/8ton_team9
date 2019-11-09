@@ -41,29 +41,37 @@ def postcreate(request):
 
 
 def post_like(request, post_id):
-   user = request.user
-   if user.is_anonymous:
-       return redirect('login')
-   post = get_object_or_404(Post, pk=post_id)
-   is_like = user in post.likes.all()
-   if is_like:
-       post.likes.remove(user)
-       if not post.likes_count == 0:
-           post.likes_count -= 1
-           post.save()
-       message = "like_cancel"
-   else:
-       post.likes.add(user)
-       post.likes_count += 1
-       post.save()
-       message = "like"
-   context = {
-              'message': message,
-              'likes_count': post.likes_count,
-              }
-   return HttpResponse(json.dumps(context), content_type="application/json")
+    user = request.user
+    if user.is_anonymous:
+        return redirect('login')
+    post = get_object_or_404(Post, pk=post_id)
+    is_like = user in post.likes.all()
+    if is_like:
+        post.likes.remove(user)
+        if not post.likes_count == 0:
+            post.likes_count -= 1
+            post.save()
+        message = "like_cancel"
+    else:
+        post.likes.add(user)
+        post.likes_count += 1
+        post.save()
+        message = "like"
+    context = {
+                'message': message,
+                'likes_count': post.likes_count,
+                }
+    return HttpResponse(json.dumps(context), content_type="application/json")
 
 
 def all_posts(request):
     all_posts = Post.objects.all()
+    print(all_posts)
     return render(request,'app/all_posts.html', {'all_posts':all_posts})
+
+
+def area_posts(request):
+    if request.method == 'POST':
+        area = request.POST.get('area')
+        area_posts = Post.objects.filter(area = area)
+        return render(request, 'app/area_posts.html', {'area_posts':area_posts})

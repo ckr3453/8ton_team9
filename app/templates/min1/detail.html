@@ -1,0 +1,45 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content%}
+
+<style>
+body{
+    margin-top : 70px;
+    margin: 0 auto;
+}
+</style>
+
+<body>
+
+<div class="section-top-border">
+
+{% comment %} 
+
+{% for a in abc.all %}
+
+<div class = "container">
+
+<h1> {{a.title}} </h1>
+<p> {{a.content}} </p> 
+{{a.file}} 
+
+{% endcomment %}
+
+위 안건에 대한 여러분의 의견을 투표해 주십시오.<br><br>
+<form action='#'>
+    <input type="radio" name="vote" value="1"> 1
+    <input type="radio" name="vote" value="2"> 2
+    <input type="radio" name="vote" value="3"> 3
+    <input type="radio" name="vote" value="4"> 4
+    <input type="radio" name="vote" value="5"> 5
+    <input type="submit" value="의견 제출">
+</form>
+1. 전혀 심각하지 않음<br>
+2. 별로 심각하지 않음<br>
+3. 보통임<br>
+4. 심각함<br>
+5. 매우 심각함<br>
+</div>
+</body>
+
+{% endblock%}

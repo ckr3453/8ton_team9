@@ -1,0 +1,45 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content%}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<title>새 글 작성</title>
+
+<style>
+body{
+    width: 80%;
+    margin: 0 auto;
+
+}
+button{
+    margin: 0 auto;
+}
+</style>
+
+<body>
+<div class="section-top-border">
+	<div class="row">
+		<div class="col-lg-8 col-md-8">
+			<h3 class="mb-30">민원 작성</h3>
+			<form action="#">
+				<div class="mt-10">
+					<input type="text" name="title" placeholder="민원 제목"
+						onfocus="this.placeholder = '제목'" onblur="this.placeholder = '제목'" required
+						class="single-input">
+				</div>
+                <div class="mt-10">
+					<textarea class="single-textarea" name="content" placeholder="민원 내용" onfocus="this.placeholder = ''"
+						onblur="this.placeholder = '민원 내용'"></textarea>
+				</div>
+				<div class="mt-10">
+					<input type="file" name="files" placeholder="파일 첨부" onfocus="this.placeholder = ''"
+						onblur="this.placeholder = 'Files'" required class="single-input">
+				</div>
+                <br>
+                <input type="submit" value='민원 제출'>
+			</form>
+		</div>
+    </div>
+</div>
+
+</body>
+{% endblock%}

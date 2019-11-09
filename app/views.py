@@ -11,3 +11,6 @@ def write(request):
 
 def detail(request):
     return render(request, 'min1/detail.html')
+
+def reported(request):
+    return render(request, 'min1/reported.html')

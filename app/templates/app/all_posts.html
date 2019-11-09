@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+ <!--================Blog Area =================-->
+
+ <!-- breadcrumb start-->
+ {% for post in all_posts %}
+ <section class="blog_area padding_top">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mb-5 mb-lg-0">
+                <div class="blog_left_sidebar"> 
+                    <article class="blog_item">
+                        <div class="blog_item_img">
+                            <img class="card-img rounded-0" src="{{post.image.url}}" alt="">
+                            <a href="#" class="blog_item_date">
+                                <h3>마감일</h3>
+                                <p>{{post.dday}} </p>
+                            </a>
+                        </div>
+                        <div class="blog_details">
+                            <a class="d-inline-block" href="single-blog.html">
+                                <h2>{{post.title}}</h2>
+                            </a>
+                            <p>{{post.content}}</p>
+                            <ul class="blog-info-link">
+                                <li><a href="#"><i class="far fa-user"></i> 자세히보기</a></li>
+                                <li><a href="#"><i class="far fa-comments"></i>공감</a></li>
+                            </ul>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endfor %}
+
+<!--================Blog Area =================-->
+{% endblock %}

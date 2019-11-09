@@ -14,35 +14,40 @@ button{
 </style>
 
 
-<form style  = "margin-top: 200px">
+<form action = "{% url 'app:postcreate' %}" method = "POST" enctype = "multipart/form-data" style  = "margin-top: 200px" >
+    {% csrf_token %}
     <div class="form-group">
-        <label for="exampleFormControlInput1">Email address</label>
-        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+        <label for ="exampleFormControlInput1">지역</label>
+        <input type="text" class="form-control" value="{{area}}" name="area">
     </div>
     <div class="form-group">
-        <label for="exampleFormControlSelect1">Example select</label>
-        <select class="form-control" id="exampleFormControlSelect1">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
+        <label for="exampleFormControlSelect1">민원 유형을 골라주세요!</label>
+        <select class="form-control" id="exampleFormControlSelect1" name = "category">
+        <option value = "유형1">1</option>
+        <option value = "유형2">2</option>
+        <option value = "유형3">3</option>
+        <option value = "유형4">4</option>
+        <option value = "유형5">5</option>
         </select>
     </div>
-    <div class="form-group">
-        <label for="exampleFormControlSelect2">Example multiple select</label>
-        <select multiple class="form-control" id="exampleFormControlSelect2">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-        </select>
+    <div class = "form-group">
+        <label for="exampleFormControlInput1">제목을 입력해주세요</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="제목" name = "title">
+      </div>
     </div>
     <div class="form-group">
-        <label for="exampleFormControlTextarea1">Example textarea</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        <label for="exampleFormControlTextarea1">민원 내용을 자세히 적어주세요</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name = "content"></textarea>
     </div>
+    <div class="form-group">
+        <label for ="exampleFormControlInput1">첨부파일을 올려주세요</laebl>
+        <input class = "upload-btn" type = "file" name = "image" placeholder = "아직 선택된 사진이 없습니다.">    
+    </div>
+    <div class="form-group">
+        <label for = "exampleFormControlInput1">마감기한을 설정해주세요</label>
+        <input type="date" name="dday">
+    </div>
+    <input type="submit" class="button color big" id="sendMessageButton" value = "민원 등록">
 </form>
 
 {% endblock%}

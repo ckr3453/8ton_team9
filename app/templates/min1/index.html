@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+#info{
+    margin:20px;
+}
+
+</style>
+   <!-- banner part start-->
+   <section class="banner_part">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-7">
+                <div class="banner_text">
+                    <div class="banner_text_iner">
+                        <h2 style="color:white"> Welcome to</h2>
+                        <h5 style = "font-family: 'BinggraeMelona'" >Min number 1 </h5>
+                        <h1>지역의 문제점을 공유하고<br> 투표를 통해 편리하게 <br>민원신청하세요!</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- banner part start-->
+
+<!-- banner part start-->
+<section class="search_your_country">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-lg-12">
+                <div class="search_form">
+                    <form action="#">
+                        <div class="form-row">
+                            <div class="col-lg-9">
+                                <div class="search_form_iner">
+                                    <select class="custom_select" id="inlineFormCustomSelect1">
+                                        <option selected>지역을 선택하세요!</option>
+                                        <option value="1">종로구</option>
+                                        <option value="2">강남구</option>
+                                        <option value="3">강동구</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <a href="{% url 'write'%}" class="search_btn">작성하기!</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="banner_text_iner" style="font-family:'sans-serif';">
+            <div id="info">
+                <h2 style="color:#00c0ff">MIN Number 1</h2>
+                <p>편리한 온라인 행정 서비스를 제공하는 
+                <span style="color:#00c0ff">민 넘버 원</span>을 통하여 각 지역에서 발생하는 여러가지 문제점을 공론화하세요!<br>
+                다른 사용자들의 공감과 동의를 얻으면 민원을 의회로 전송하여 특정한 행정 조치를 요구할 수 있습니다.<br>
+                관심사를 정하여 다른 지역에서 발생하는 문제점을 알아보고, 투표에 참여하며 의견을 드러내세요!<br>
+                자율적인 민주시민으로 가는 지름길, 민 넘버 원입니다.<br>
+                </p>
+            </div>
+            <div id="info">
+                <h2 style="color:#00c0ff">심사 절차</h2>
+                <img src="{% static 'img/process.png' %}" height=140 width=750>
+            </div>
+            <div id="info">
+                <h2 style="color:#00c0ff">의회 제출 요건</h2>
+                <p>
+                1. 해당 지역 거주자의 30% 이상이 투표에 참여<br>
+                2. 투표 참여자의 70% 이상이 4(심각함) 혹은 5(매우 심각함) 선택<br>
+                </p>
+            </div>
+            </div> 
+        </div>
+    </div>
+</section>
+{% endblock %}

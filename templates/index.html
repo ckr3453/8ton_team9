@@ -25,6 +25,11 @@
     <link rel="stylesheet" href="{% static 'css/slick.css' %}">
     <!-- style CSS -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
     <style>
         @font-face { 
             font-family: 'BinggraeMelona'; 
@@ -66,12 +71,13 @@
                                     지역별 민원보기
                                 </a>
                                 <form action = "{% url 'app:area_posts' %}" method = "POST">
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown1" name = "area">
-                                        <a class="dropdown-item" href="#">종로구</a>
-                                        <a class="dropdown-item" href="#">강남구</a>
-                                        <a class="dropdown-item" href="#">강동구</a>
-                                        <a class="dropdown-item" href="#">노원구</a>
-                                        <a class="dropdown-item" href="#">은평구</a>
+                                    {%csrf_token%}
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown1" >
+                                        <input type = "submit" class="dropdown-item" value = "종로구" name = "area">
+                                        <input type = "submit" class="dropdown-item" value = "강동구"  name = "area">
+                                        <input type = "submit" class="dropdown-item" value = "노원구"  name = "area">
+                                        <input type = "submit" class="dropdown-item" value = "강남구"  name = "area">
+                                        <input type = "submit" class="dropdown-item" value = "은평구"  name = "area">
                                     </div>
                                 </form>
                             </li>
@@ -80,13 +86,53 @@
                             </li>
                         </ul>
                     </div>
-                    <a class="btn_1 d-none d-lg-block" href="#">로그인</a>
+                    <!-- {% if user.is_authenticated %}
+                        <a class="btn_1 d-none d-lg-block">{{ user.profile.nickname }}님 환영합니다.</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="btn_1 d-none d-lg-block" href="#">내 정보 보기</a>
+                        <a class="btn_1 d-none d-lg-block" href="#" data-toggle="modal" data-target="#logoutModal">로그아웃 하기</a>
+                    {% else %}
+                        <a class="btn_1 d-none d-lg-block" href="{% url 'userapp:login' %}">로그인 하기</a>
+                        <a class="btn_1 d-none d-lg-block" href="{% url 'userapp:register' %}">회원가입 하기</a>
+                    {% endif %} -->
+                    {% if user.is_authenticated %}
+                        <a class="btn_1 d-none d-lg-block">{{ user.username }}님 환영합니다.</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="btn_1 d-none d-lg-block" href="#">내 정보 보기</a>
+                        <a class="btn_1 d-none d-lg-block" href="#" data-toggle="modal" data-target="#logoutModal">로그아웃 하기</a>
+                    {% else %}
+                        <a class="btn_1 d-none d-lg-block" href="{% url 'login' %}">로그인 하기</a>
+                        <a class="btn_1 d-none d-lg-block" href="{% url 'register' %}">회원가입 하기</a>
+                    {% endif %}
                 </nav>
             </div>
         </div>
     </div>
+
+    <!-- Logout Modal-->
+
 </header>
 <!-- Header part end-->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">안녕히 가세요.</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">정말 로그아웃 하시겠습니까?</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">취소</button>
+                <form method="POST" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <input type="submit" class="btn btn-primary" value="로그아웃">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
    <!-- banner part start-->
    <section class="banner_part">
     <div class="container">
@@ -115,7 +161,7 @@
                             {% csrf_token %}	
                             <div class="col-lg-9">
                                 <div class="search_form_iner">
-                                    <select class="custom_select" id="inlineFormCustomSelect1" name = "area">
+                                    <select  class="custom_select" id="inlineFormCustomSelect1" name = "area">
                                         <option selected>지역을 선택하세요!</option>
                                         <option value="종로구" >종로구</option>
                                         <option value="강남구">강남구</option>
@@ -277,6 +323,20 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="js/mail-script.js"></script>
 <!— custom js —>
 <script src="js/custom.js"></script>
+<!-- Bootstrap core JavaScript-->
+<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<!-- Core plugin JavaScript-->
+<script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+<!-- Page level plugin JavaScript-->
+<script src="{% static 'vendor/chart.js/Chart.min.js' %}"></script>
+<script src="{% static 'vendor/datatables/jquery.dataTables.js' %}"></script>
+<script src="{% static 'vendor/datatables/dataTables.bootstrap4.js' %}"></script>
+<!-- Custom scripts for all pages-->
+<script src="{% static 'js/sb-admin.min.js' %}"></script>
+<!-- Demo scripts for this page-->
+<script src="{% static 'js/demo/datatables-demo.js' %}"></script>
+<script src="{% static 'js/demo/chart-area-demo.js' %}"></script>
 </body>
 
 </html>

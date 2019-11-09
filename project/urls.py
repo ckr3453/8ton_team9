@@ -1,7 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
 import app.views, userapp.views
-<<<<<<< HEAD
 from app import urls as app_urls
 from . import views
 from django.conf import settings

@@ -10,76 +10,162 @@ def home(request):
 def index(request):
     return render(request, 'app/index.html')
 
-def test(request):
+def test(request):# User Authentication
 
-    return render (request, 'app/test.html')
-
-
-########## Function ##########
-
-##### Keyword extract module #####
-def init_entities(text):
+    def init_entities(text):
     # Preprocessing: Encoding
-    if isinstance(text, six.binary_type):
-        text = text.decode('utf-8')
+        if isinstance(text, six.binary_type):
+            text = text.decode('utf-8')
 
-    # Instantiates a plain text document.
-    document = types.Document(content=text, type=enums.Document.Type.PLAIN_TEXT)
+        # Instantiates a plain text document.
+        document = types.Document(content=text, type=enums.Document.Type.PLAIN_TEXT)
 
-    # Detects entities in the document
-    entities = client.analyze_entities(document).entities
+        # Detects entities in the document
+        entities = client.analyze_entities(document).entities
 
-    if len(entities) == 0:
-        print("Keyword None\n Exit")
-        exit()
-    else:
-        print(entities[0].name)
-        return entities[0].name
+        if len(entities) == 0:
+            print("Keyword None\n Exit")
+            exit()
+        else:
+            print(entities[0].name)
+            return entities[0].name
 
 
-##### Google image downloade module #####
-def download_images(query):
-    # Set arguments
-    arguments = {
-        "keywords": query,
-        "limit": 1,
-        "print_urls": True,
-        "size": "medium",
-        "output_directory": "C:/Users/david/Desktop/부엉이/teamproject/project/static/img", # 절대경로로 수정하세요.
-        "no_directory": True,
-    }
-    try:
-        response.download(arguments)
-    except FileNotFoundError:
-        arguments = {"keywords": query,
-                     "format": "jpg",
-                     "limit": 1,
-                     "print_urls": True,
-                     "size": "medium"
-                     }
+    ##### Google image downloade module #####
+    def download_images(query):
+        # Set arguments
+        arguments = {
+            "keywords": query,
+            "limit": 1,
+            "print_urls": True,
+            "size": "medium",
+            "output_directory": "C:/Users/david/Desktop/부엉이/teamproject/project/static/img", # 절대경로로 수정하세요.
+            "no_directory": True,
+        }
         try:
-            response.download(arguments)
-        except:
-            pass
+            # a = response.download(arguments)
+            # print(a)
+            # print(type(a))
+            # print(a[0].get(query))
+            # b = str(a[0].get(query))
+            # c = ''
 
-########## Function ##########
+            # i = len(b) - 3
+            # while (b[i] != '\\'):
+            #     c += b[i]
+            #     i -= 1
+            # c = str(c)
+            
+            # c = c[::-1]
+            a = response.download(arguments)
+            print(a)
+            print(type(a))
+            print(a[0].get(query))
+            b = str(a[0].get(query))
+            b=b[2:len(b)-2]
+            print(b)
 
-# User Authentication
-#credential_path = "파일이름.json"
-credential_path = "C:/Users/david/Desktop/부엉이/teamproject/app/handle8ton-a089bd5358fe.json"
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credential_path
+            return b
 
-# Instantiates Client
-client = language.LanguageServiceClient()
+        except FileNotFoundError:
+            arguments = {"keywords": query,
+                        "format": "jpg",
+                        "limit": 1,
+                        "print_urls": True,
+                        "size": "medium"
+                        }
+            try:
+                response.download(arguments)
+            except:
+                pass
 
-# Instantiates downloader
-response = google_images_download.googleimagesdownload()
 
-# Analysing Entities in Text
+    #credential_path = "파일이름.json" , 절대경로로 수정하세요.
+    credential_path = "C:/Users/david/Desktop/부엉이/teamproject/app/handle8ton-a089bd5358fe.json"
+    os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credential_path
 
-text = '저희 동네앞 쓰레기장 건설에 반대합니다.'
+    # Instantiates Client
+    client = language.LanguageServiceClient()
 
-# download_images(init_entities(str 변수입력))
-download_images(init_entities(text))
+    # Instantiates downloader
+    response = google_images_download.googleimagesdownload()
+
+    # Analysing Entities in Text
+
+    #게시글 제목
+    text = '저희 동네 쓰레기장 건설에 반대합니다.'
+
+    # download_images(init_entities(str 변수입력))
+    c = download_images(init_entities(text))
+    c = str(c)
+    c = c.replace(r"\\","/")
+    print(c)
+    return render(request, 'app/test.html', {'photo_src' : c , 'title' : text})
+
+
+# ########## Function ##########
+
+# ##### Keyword extract module #####
+# def init_entities(text):
+#     # Preprocessing: Encoding
+#     if isinstance(text, six.binary_type):
+#         text = text.decode('utf-8')
+
+#     # Instantiates a plain text document.
+#     document = types.Document(content=text, type=enums.Document.Type.PLAIN_TEXT)
+
+#     # Detects entities in the document
+#     entities = client.analyze_entities(document).entities
+
+#     if len(entities) == 0:
+#         print("Keyword None\n Exit")
+#         exit()
+#     else:
+#         print(entities[0].name)
+#         return entities[0].name
+
+
+# ##### Google image downloade module #####
+# def download_images(query):
+#     # Set arguments
+#     arguments = {
+#         "keywords": query,
+#         "limit": 1,
+#         "print_urls": True,
+#         "size": "medium",
+#         "output_directory": "C:/Users/david/Desktop/부엉이/teamproject/project/static/img", # 절대경로로 수정하세요.
+#         "no_directory": True,
+#     }
+#     try:
+#         a = response.download(arguments)
+#         print(a)
+#         print(type(a))
+#         print(a[0].get(query))
+#         b = str(a[0].get(query))
+#         c = ''
+
+#         i = len(b) - 3
+#         while (b[i] != '\\'):
+#             c += b[i]
+#             i -= 1
+#         c = str(c)
+        
+#         c = c[::-1]
+#         return c
+
+#     except FileNotFoundError:
+#         arguments = {"keywords": query,
+#                      "format": "jpg",
+#                      "limit": 1,
+#                      "print_urls": True,
+#                      "size": "medium"
+#                      }
+#         try:
+#             response.download(arguments)
+#         except:
+#             pass
+
+
+
 
    

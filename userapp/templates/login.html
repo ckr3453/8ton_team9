@@ -6,14 +6,13 @@
 
 {% block content %}
     <body class="bg-dark">
-
-    <div class="container">
+    <br><br><br>
+    <div class="container" style="margin: 0 auto;">
         <div class="card card-login mx-auto mt-5">
             <div class="card-header">Login</div>
             <div class="card-body">
                 <form method="POST" action="{% url 'login' %}">
                     {% csrf_token %}
-
                     <div class="form-group">
                         <div class="form-label-group">
                             <input name="email" type="email" id="inputEmail" class="form-control"
@@ -37,4 +36,5 @@
             </div>
         </div>
     </div>
+    <br><br><br>
 {% endblock %}

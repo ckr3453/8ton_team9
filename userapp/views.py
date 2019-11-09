@@ -1,9 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponseRedirect, get_object_or_404, redirect
 from django.views.generic import View
 
+from django.contrib.auth.models import User
+from django.contrib import auth
 # Create your views here.
 def index(request):
-    return render(request, 'app/index.html')
+    return render(request, 'base.html')
 
 class Register(View):
     def get(self, request):
@@ -40,5 +42,5 @@ def login(request):
 def logout(request):
     if request.method == 'POST':
         auth.logout(request)
-        return redirect('index')
-    return render(request, 'index.html')
+        return render(request, 'base.html')
+    return render(request, 'base.html')

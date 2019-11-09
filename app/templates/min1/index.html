@@ -5,6 +5,39 @@
 #info{
     margin:20px;
 }
+#pointer {
+    display:inline-block;
+    width: 200px;
+    height: 40px;
+    position: relative;
+    background: #00c0ff;
+    text-align: center;
+    font-size: 23px;
+}
+#pointer:after {
+    display:inline-block;
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-left: 20px solid white;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+}
+#pointer:before {
+    display:inline-block;
+    content: "";
+    position: absolute;
+    right: -20px;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-left: 20px solid #00c0ff;;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+}
 </style>
    <!-- banner part start-->
    <section class="banner_part">
@@ -13,8 +46,9 @@
             <div class="col-lg-7">
                 <div class="banner_text">
                     <div class="banner_text_iner">
-                        <h5 style = "font-family: 'BinggraeMelona'" >민 number1 </h5>
-                        <h1>지역의 문제점을 공유하고 투표를 통해 간편하게 민원신청하세요!</h1>
+                        <h2 style="color:white"> Welcome to</h2>
+                        <h5 style = "font-family: 'BinggraeMelona'" >Min number 1 </h5>
+                        <h1>지역의 문제점을 공유하고<br> 투표를 통해 편리하게 <br>민원신청하세요!</h1>
                     </div>
                 </div>
             </div>
@@ -50,20 +84,20 @@
             </div>
         </div>
         <div class="row">
-            <div class="banner_text_iner">
+            <div class="banner_text_iner" style="font-family:'sans-serif';">
             <div id="info">
-                <h3 style="color:#0080FF">MIN Number 1</h3>
+                <h2 style="color:#00c0ff">MIN Number 1</h2>
                 <p>편리한 온라인 행정 서비스를 제공하는 
-                <span style="color:#0080FF">민 넘버 원</span>을 통하여 각 지역에서 일어나는 여러가지 문제점을 공론화하세요!<br>
+                <span style="color:#00c0ff">민 넘버 원</span>을 통하여 각 지역에서 일어나는 여러가지 문제점을 공론화하세요!<br>
                 다른 사용자들의 공감과 동의를 얻으면 민원을 의회로 전송하여 특정한 행정 조치를 요구할 수 있습니다.<br>
                 </p>
             </div>
             <div id="info">
-                <h4>심사 절차</h4>
-                <p>게시글 작성 -> 1달 간 의견 수렴 -> 의회 제출 결정<br></p>
+                <h3 style="color:#00c0ff">심사 절차</h3>
+                <img src="{% static 'image/process.png'%}">
             </div>
             <div id="info">
-                <h4>의회 제출 요건</h4>
+                <h3 style="color:#00c0ff">의회 제출 요건</h3>
                 <p>
                 1. 해당 지역 거주자의 30% 이상이 투표에 참여<br>
                 2. 투표 참여자의 70% 이상이 4(심각함) 혹은 5(매우 심각함) 선택<br>

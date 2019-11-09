@@ -37,102 +37,99 @@
     
 </head>
 
-<body>
-    <!--::header part start::-->
-    <header class="main_menu home_menu">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-12">
-                    <nav class="navbar navbar-expand-lg navbar-light">
-                        <a class="navbar-brand" href="{% url 'index'%}"> <img src="{% static 'img/logo.png' %}" alt="logo"> </a>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse"
+
+<!--::header part start::-->
+<header class="main_menu" style="background-color:#00c0ff">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-12">
+                <nav class="navbar navbar-expand-lg">
+                    <a class="navbar-brand" href="{% url 'index'%}"> <img src="{% static 'img/logo.png' %}" alt="logo"> </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
                             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
                             <span class="menu_icon"><i class="fas fa-bars"></i></span>
-                        </button>
-
-                        <div class="collapse navbar-collapse main-menu-item" id="navbarSupportedContent">
-                            <ul class="navbar-nav">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{% url 'index'%}">Home</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="">민원소개</a>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown1"
-                                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        지역별 민원보기
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                                        <a class="dropdown-item" href="elements.html">종로구</a>
-                                        <a class="dropdown-item" href="elements.html">강남구</a>
-                                        <a class="dropdown-item" href="elements.html">강서구</a>
-                                    </div>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="contact.html">문의</a>
-                                </li>
-                            </ul>
-                        </div>
-                        {% if user.is_activate %}
-                        {{user.username}}님 환영합니다!
-                        {% else%}
-                        <a class="btn_1 d-none d-lg-block" href="{% url 'login'%}">로그인</a>
-                        {% endif %}
-                    </nav>
-                </div>
+                    </button>
+                    <div class="collapse navbar-collapse main-menu-item" id="navbarSupportedContent">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'index'%}">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="">민원소개</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown1"
+                                    role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    지역별 민원보기
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                                    <a class="dropdown-item" href="elements.html">종로구</a>
+                                    <a class="dropdown-item" href="elements.html">강남구</a>
+                                    <a class="dropdown-item" href="elements.html">강서구</a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="contact.html">문의</a>
+                            </li>
+                        </ul>
+                    </div>
+                    {% if user.is_activate %}
+                    <!--{{user.username}}님 -->환영합니다!
+                    {% else%}
+                    <a class="btn_1 d-none d-lg-block" href="{% url 'login'%}">로그인</a>
+                    {% endif %}
+                </nav>
             </div>
         </div>
-    </header>
-    <!-- Header part end-->
-    {% block content %}
-    {% endblock %}
+    </div>
+</header>
+<!-- Header part end-->
+{% block content %}
+{% endblock %}
  
-    <!--::footer_part start::-->
-    <footer class="footer_part">
-        <div class="container">
-            <hr>
-            <div class="row" style="margin:auto;">
-                <h4 style="color:#0080FF">Min number 1 </h4>
-                <p> 국민 곁의 편리한 민원 파트너 민 넘버 원과 함께 편안한 하루 보내세요!</p>
-            </div>
-
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="copyright_text">
-                        <P><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+<!--::footer_part start::-->
+<footer class="footer_part">
+    <div class="container">
+        <hr>
+    <div class="row" style="margin:auto;">
+        <h4 style="color:white">Min number 1 </h4><br>
+        <p style="color:white">| 국민 곁의 편리한 민원 파트너 민 넘버 원과 함께 편안한 하루 보내세요!</p>
+    </div>
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="copyright_text">
+                <P><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made by <a href="https://colorlib.com" target="_blank">Colorlib</a>
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></P>
-                    </div>
-                </div>
             </div>
         </div>
-    </footer>
-    <!--::footer_part end::-->
+    </div>
+    </div>
+</footer>
+<!--::footer_part end::-->
 
-    <!-- jquery plugins here-->
-    <!-- jquery -->
-    <script src="js/jquery-1.12.1.min.js"></script>
-    <!-- popper js -->
-    <script src="js/popper.min.js"></script>
-    <!-- bootstrap js -->
-    <script src="js/bootstrap.min.js"></script>
-    <!— easing js —>
-    <script src="js/jquery.magnific-popup.js"></script>
-    <!— particles js —>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
-    <!— slick js —>
-    <script src="js/slick.min.js"></script>
-    <script src="js/jquery.counterup.min.js"></script>
-    <script src="js/waypoints.min.js"></script>
-    <script src="js/contact.js"></script>
-    <script src="js/jquery.ajaxchimp.min.js"></script>
-    <script src="js/jquery.form.js"></script>
-    <script src="js/jquery.validate.min.js"></script>
-    <script src="js/mail-script.js"></script>
-    <!— custom js —>
-    <script src="js/custom.js"></script>
-</body>
+<!-- jquery plugins here-->
+<!-- jquery -->
+<script src="js/jquery-1.12.1.min.js"></script>
+<!-- popper js -->
+<script src="js/popper.min.js"></script>
+<!-- bootstrap js -->
+<script src="js/bootstrap.min.js"></script>
+<!— easing js —>
+<script src="js/jquery.magnific-popup.js"></script>
+<!— particles js —>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/jquery.nice-select.min.js"></script>
+<!— slick js —>
+<script src="js/slick.min.js"></script>
+<script src="js/jquery.counterup.min.js"></script>
+<script src="js/waypoints.min.js"></script>
+<script src="js/contact.js"></script>
+<script src="js/jquery.ajaxchimp.min.js"></script>
+<script src="js/jquery.form.js"></script>
+<script src="js/jquery.validate.min.js"></script>
+<script src="js/mail-script.js"></script>
+<!— custom js —>
+<script src="js/custom.js"></script>
 
